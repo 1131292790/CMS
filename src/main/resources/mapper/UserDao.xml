@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 设置为UserDao接口方法提供sql语句配置 -->
+<mapper namespace="com.cms.dao.AdminDao">
+    <resultMap id="adminMap" type="admin">
+        <id property="username" column="ano"></id>
+        <result property="password" column="pwd"></result>
+        <result property="privilege" column="pvl"></result>
+    </resultMap>
+    <select id="selectByAnoPwd" resultMap="adminMap">
+        select * from admin where ano=#{username} and pwd=#{password}
+    </select>
+
+</mapper>

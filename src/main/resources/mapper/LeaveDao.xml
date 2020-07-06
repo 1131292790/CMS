@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 设置为UserDao接口方法提供sql语句配置 -->
+<mapper namespace="com.cms.dao.LeaveDao">
+
+    <select id="selectAll" resultType="Leave">
+        select  * from leave
+    </select>
+
+    <select id="selectBylno" resultType="Leave" parameterType="String">
+        select * from leave where lno = #{lno}
+    </select>
+
+    <delete id="deleteBylno" parameterType="String">
+        delete from leave where lno = #{lno}
+    </delete>
+
+    <update id="update" parameterType="Leave">
+        update leave set reason = #{reason},l_start = #{l_start},l_end = #{l_end} where lno = #{lno}
+    </update>
+
+    <insert id="add" parameterType="Leave">
+        exec lea_insert #{sno},#{ano},#{reason},#{l_start},#{l_end}
+    </insert>
+
+</mapper>
